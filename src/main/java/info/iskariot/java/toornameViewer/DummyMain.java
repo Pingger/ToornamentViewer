@@ -28,8 +28,8 @@ public class DummyMain
         {
             Team t = new Team();
             t.name = o.select(".name").first().text();
-            t.rank = o.select(".rank").first().text();
-            t.points = o.select(".points").first().text();
+            t.rank = Integer.parseInt(o.select(".rank").first().text());
+            t.points = Integer.parseInt(o.select(".points").first().text());
             teams.put(t.name, t);
         }
         ArrayList<Match> matches = new ArrayList<>();
@@ -77,10 +77,11 @@ public class DummyMain
             System.out.println();
         }
         ArrayList<Team> tt = new ArrayList<>(teams.values());
-        Collections.sort(tt, (a, b) -> a.rank.compareTo(b.rank));
+        Collections.sort(tt, (a, b) -> Integer.valueOf(a.rank).compareTo(Integer.valueOf(b.rank)));
+        String spaces = "                                        ";
         for (Team t : tt)
         {
-            System.out.print(t.rank + "\t" + t.points + "\t" + t.name + "\t\t");
+            System.out.print(t.rank + "\t" + t.points + "\t" + t.name + spaces.substring(t.name.length()) + "\t");
             for (Match m : t.matches)
             {
                 System.out.print(Arrays.toString(m.points));

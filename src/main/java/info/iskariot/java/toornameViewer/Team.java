@@ -7,8 +7,8 @@ public class Team
 {
     public List<Match> matches = new ArrayList<>();
     public String      name;
-    public String      points;
-    public String      rank;
+    public int         points;
+    public int         rank;
 
     @Override
     public String toString()
